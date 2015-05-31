@@ -37,10 +37,10 @@ void loop() {
   count++;
   //If the 4th digit is past 9, it cycles back to 0 and increments the 3rd digit 
   //Initiate a for loop instead of multiple if conditions.
-  for (d=0; d == 10; d++){
-    for (c=0; c == 10; c++){
-      for (b=0; b == 10; b++){
-        for (a=0; a == 10; a++){
+  for (d=0; d == 9; d++){
+    for (c=0; c == 9; c++){
+      for (b=0; b == 9; b++){
+        for (a=0; a == 9; a++){
           //Much simpler than multiple ifs.
         }
       }
