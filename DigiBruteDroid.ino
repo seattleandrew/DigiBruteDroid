@@ -34,22 +34,16 @@ void loop() {
   DigiKeyboard.sendKeyStroke(num[d]);
   DigiKeyboard.sendKeyStroke(40);
   delay(1000);
-  d++;
   count++;
   //If the 4th digit is past 9, it cycles back to 0 and increments the 3rd digit 
-  if(d == 10){
-    d = 0;
-    c++;
-    //If the 3rd digit is past 9, it cycles back to 0 and increments the 2nd digit
-    if(c == 10){
-      c = 0;
-      b++;
-      //If the 2nd digit is past 9, it cycles back to 0 and increments the 1st digit
-      if(b == 10){
-        b = 0;
-        a++; //if the 1st digit is past 9 it'll probably just throw out errors.
-        //TODO: add a section to try 5+ digit PINS
+  //Initiate a for loop instead of multiple if conditions.
+  for (d=0; d == 9; d++){
+    for (c=0; c == 9; c++){
+      for (b=0; b == 9; b++){
+        for (a=0; a == 9; a++){
+          //Much simpler than multiple ifs.
+        }
       }
-    }
-  }    
+    }    
+  }
 }
