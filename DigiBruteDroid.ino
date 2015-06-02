@@ -61,17 +61,17 @@ void loop() {
       if(b == 10){
         b = 0;
         a++; //if the 1st digit is past 9 it'll probably just throw out errors.
-		      if(a == 10){
-			    //remain_true will equal true, loop through void(), and send the 5th keystroke
-			    key_stroke_e = true;
-			    e++;
-			    //Remember that brute forcing will still work, despite its strange order.
-			    //After e == 10, it will become 0 again.
-			      if(e == 10){
-				    e = 0;
-			    }
-		    }
-      }
+	if(a == 10){
+	  //remain_true will equal true, loop through void(), and send the 5th keystroke
+	  key_stroke_e = true;
+	  e++;
+	  //Remember that brute forcing will still work, despite its strange order.
+	  //After e == 10, it will become 0 again.
+	  if(e == 10){
+	    e = 0;
+	  }
+	}
+      }  
     }
   }    
 }
