@@ -43,7 +43,7 @@ void loop() {
     DigiKeyboard.sendKeyStroke(num[b]);
     DigiKeyboard.sendKeyStroke(num[c]);
     DigiKeyboard.sendKeyStroke(num[d]);
-	  DigiKeyboard.sendKeyStroke(num[e]);
+    DigiKeyboard.sendKeyStroke(num[e]);
   }
   DigiKeyboard.sendKeyStroke(40);
   delay(1000);
