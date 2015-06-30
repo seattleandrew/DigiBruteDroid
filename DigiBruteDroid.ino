@@ -50,7 +50,7 @@ void loop() {
   delay(1000);
   count++;
   //Dimish the amount of lines by using ternary operators
-  d = (d==10) ? 0 : (d + 1);
+	d = (d==10) ? 0 : (d + 1);
 	if (d==10){
 		c = (c==10) ? 0 : (c + 1);
 		if (c==10){
