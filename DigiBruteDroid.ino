@@ -50,17 +50,17 @@ void loop() {
   delay(1000);
   count++;
   //Dimish the amount of lines by using ternary operators
-	d = (d==10) ? 0 : (d + 1);
-	if (d==10){
-		c = (c==10) ? 0 : (c + 1);
-		if (c==10){
-			b = (b==10) ? 0 : (b + 1);
-			if (b==10){
-				a = (a==10) ? 0 : (a + 1);
-				if (a==10){
-					e = (e==10 && key_stroke_e == true) ? 0 : (e + 1);
-				}
-			}
-		}
-	}
+  d = (d==10) ? 0 : (d + 1);
+  if (d==10){
+    c = (c==10) ? 0 : (c + 1);
+    if (c==10){
+      b = (b==10) ? 0 : (b + 1);
+      if (b==10){
+        a = (a==10) ? 0 : (a + 1);
+        if (a==10){
+          e = (e==10 && key_stroke_e == true) ? 0 : (e + 1);
+        }
+      }
+    }
+  }
 }
