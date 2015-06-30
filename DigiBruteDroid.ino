@@ -58,7 +58,9 @@ void loop() {
       if (b==10){
         a = (a==10) ? 0 : (a + 1);
         if (a==10){
-          e = (e==10 && key_stroke_e == true) ? 0 : (e + 1);
+          if (key_stroke_e == true){
+            e = (e==10) ? 0 : (e + 1);
+          }  
         }
       }
     }
