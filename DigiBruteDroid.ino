@@ -52,8 +52,11 @@ void loop() {
   /*Dimish the amount of lines by using ternary operators
   This checks in order from e, a, b, c, and to d
   Essentially, each int is conditioned. E.g. a would be assigned 0 if it equals 10 to reset.
-  If b == 10, then a would increment; otherwise it would equal itself.
+  If b == 10, then 'a' would increment; otherwise it would equal itself.
   */
+  if(a==10){
+    key_stroke_e = true;
+  }
   e = (e==10) ? 0 : (a==10 && key_stroke_e == true) ? (e + 1) : e;
   a = (a==10) ? 0 : (b==10) ? (a + 1) : a;
   b = (b==10) ? 0 : (c==10) ? (b + 1) : b;
